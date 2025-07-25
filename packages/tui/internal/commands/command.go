@@ -69,6 +69,7 @@ func (r CommandRegistry) Sorted() []Command {
 			AppHelpCommand:      1,
 			SessionShareCommand: 2,
 			ModelListCommand:    3,
+			OpsMenuCommand:      4,
 		}
 
 		aPriority, aHasPriority := priorityOrder[a.Name]
@@ -141,6 +142,7 @@ const (
 	MessagesUndoCommand         CommandName = "messages_undo"
 	MessagesRedoCommand         CommandName = "messages_redo"
 	AppExitCommand              CommandName = "app_exit"
+	OpsMenuCommand              CommandName = "ops_menu"
 )
 
 func (k Command) Matches(msg tea.KeyPressMsg, leader bool) bool {
@@ -365,6 +367,12 @@ func LoadFromConfig(config *opencode.Config) CommandRegistry {
 			Description: "exit the app",
 			Keybindings: parseBindings("ctrl+c", "<leader>q"),
 			Trigger:     []string{"exit", "quit", "q"},
+		},
+		{
+			Name:        OpsMenuCommand,
+			Description: "ops menu",
+			Keybindings: parseBindings("<leader>o"),
+			Trigger:     []string{"ops"},
 		},
 	}
 	registry := make(CommandRegistry)

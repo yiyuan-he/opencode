@@ -968,6 +968,9 @@ func (a Model) executeCommand(command commands.Command) (tea.Model, tea.Cmd) {
 	case commands.ThemeListCommand:
 		themeDialog := dialog.NewThemeDialog()
 		a.modal = themeDialog
+	case commands.OpsMenuCommand:
+		opsDialog := dialog.NewOpsDialog(a.app)
+		a.modal = opsDialog
 	// case commands.FileListCommand:
 	// 	a.editor.Blur()
 	// 	findDialog := dialog.NewFindDialog(a.fileProvider)
