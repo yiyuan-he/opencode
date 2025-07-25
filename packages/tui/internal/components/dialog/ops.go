@@ -62,7 +62,6 @@ func (o *opsDialog) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				// Send the action as a prompt to the AI
 				return o, tea.Sequence(
 					util.CmdHandler(modal.CloseModalMsg{}),
-					util.CmdHandler(app.SetEditorContentMsg{Text: item.Action}),
 					util.CmdHandler(app.SendPrompt{Text: item.Action}),
 				)
 			}
