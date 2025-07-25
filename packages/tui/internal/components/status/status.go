@@ -46,13 +46,14 @@ func (m statusComponent) logo() string {
 		Bold(true).
 		Render
 
-	open := base("open")
-	code := emphasis("code ")
+	apm := base("apm")
+	dev := base(" dev")
+	agent := emphasis(" agent ")
 	version := base(m.app.Version)
 	return styles.NewStyle().
 		Background(t.BackgroundElement()).
 		Padding(0, 1).
-		Render(open + code + version)
+		Render(apm + dev + agent + version)
 }
 
 func (m statusComponent) View() string {

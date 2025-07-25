@@ -627,19 +627,26 @@ func (a Model) home() string {
 	base := baseStyle.Render
 	muted := styles.NewStyle().Foreground(t.TextMuted()).Background(t.Background()).Render
 
-	open := `
-█▀▀█ █▀▀█ █▀▀ █▀▀▄ 
-█░░█ █░░█ █▀▀ █░░█ 
-▀▀▀▀ █▀▀▀ ▀▀▀ ▀  ▀ `
-	code := `
-█▀▀ █▀▀█ █▀▀▄ █▀▀
-█░░ █░░█ █░░█ █▀▀
-▀▀▀ ▀▀▀▀ ▀▀▀  ▀▀▀`
+	apm := `
+█▀▀█ █▀▀█ █▀▄▀█
+█▄▄█ █░░█ █░█░█
+▀  ▀ █▀▀▀ ▀░▀░▀`
+	dev := `
+█▀▀▄ █▀▀ █░░█
+█░░█ █▀▀ ▀▄▄▀
+▀▀▀  ▀▀▀  ▀▀`
+	agent := `
+█▀▀█ █▀▀▀ █▀▀ █▀▀▄ ▀▀█▀▀
+█▄▄█ █░▀█ █▀▀ █░░█ ░░█░░
+▀  ▀ ▀▀▀▀ ▀▀▀ ▀  ▀ ░░▀░░`
 
 	logo := lipgloss.JoinHorizontal(
 		lipgloss.Top,
-		muted(open),
-		base(code),
+		muted(apm),
+		base("  "),
+		muted(dev),
+		base("  "),
+		base(agent),
 	)
 	// cwd := app.Info.Path.Cwd
 	// config := app.Info.Path.Config
